@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ <script type="text/javascript" src="../js/prop-types.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <!-- JSX {JS element} -->
+ <script type="text/babel">
+    // create component
+    class Person extends React.Component{
+        //add attribute to the instance of this class a = 100;
+        //add attribute to the class   static a = 100;
+
+    // data type restriction  
+        static propTypes = {
+        // props read-only
+        // data type restriction
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        // speak: Protypes.func     --- this paramater must be a function
+    }
+    // specify default value
+        static defaultProps = {
+        sex: "Male",
+        age: 18,
+    }      
+       
+        render(){
+            console.log(this);
+            // set props
+            const {name, age, sex} = this.props;
+            return (
+                <ul>
+                    <li>Name: {name}</li>
+                    <li>Sex: {sex}</li>
+                    <li>Age: {age}</li>
+                </ul>
+            )
+        }
+    }
+    
+    const p = {name:'Simon Su', age: 18, sex:"Male"};
+    ReactDOM.render(<Person {...p}/>,document.getElementById('test'));
+ </script>
+</body>
+
+</html>

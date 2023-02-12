@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <!-- JSX {JS element} -->
+ <script type="text/babel">
+    const myID = 'id0001'
+    const myData = 'hello, react'
+
+ const VDOM = (
+     <div>
+     <h1 className='title' id={myID}>
+        <span style={{background:'red',fontSize:'29px'}}> {myData} </span>
+     </h1>
+     </div>)
+ ReactDOM.render(VDOM,document.getElementById('test'))
+ </script>
+</body>
+
+</html>

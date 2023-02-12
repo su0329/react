@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <script type="text/babel">
+    const myID = 'id0001'
+    const myData = 'hello, react'
+
+    function Demo(){
+         return <h2>{myData}</h2>
+     }
+     /*  The first letter of componment name must be upper case */
+ ReactDOM.render(<Demo/>,document.getElementById('test'))
+ </script>
+</body>
+
+</html>

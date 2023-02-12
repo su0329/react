@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ <script type="text/javascript" src="../js/prop-types.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <!-- JSX {JS element} -->
+ <script type="text/babel">
+    // array
+    let arr1 = [1,3,4]
+    let arr2 = [2,5,8]
+    console.log(...arr1); // log all elements in the array
+    let arr3 = [...arr1,...arr2] // combine arr1 and arr2
+    
+    function sum(...numbers){
+        return numbers.reduce((preValue,currentValue)=>{
+            return preValue + currentValue
+        })
+    }
+    
+    console.log(sum(...arr1));
+    // create component
+    class Person extends React.Component{
+        render(){
+            console.log(this);
+            // set props
+            const {name, age, sex} = this.props;
+            return (
+                <ul>
+                    <li>Name: {name}</li>
+                    <li>Sex: {sex}</li>
+                    <li>Age: {age}</li>
+                </ul>
+            )
+        }
+    }
+    // add restriction to the object properties
+    // v 15 syntax: react.PropTypes.string
+    // v 16 import prop-types.js
+    Person.propTypes = {
+        // props read-only
+        // data type restriction
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        // speak: Protypes.func     --- this paramater must be a function
+    }
+    // specify default value
+    Person.defaultProps = {
+        sex: "Male",
+        age: 18,
+    }
+    const p = {name:'Simon Su', age: 18, sex:"Male"};
+    // copy an object 
+    let person2 = {...p}
+    person2.age = 22;
+    ReactDOM.render(<Person {...p}/>,document.getElementById('test'));
+    ReactDOM.render(<Person {...person2}/>,document.getElementById('test'));
+ </script>
+</body>
+
+</html>

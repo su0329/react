@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <!-- JSX {JS element} -->
+ <script type="text/babel">
+    class Demo extends React.Component{
+        /*
+        createRef() will create a ref container,
+        only one element is permitted.
+        */
+        myRef = React.createRef()
+
+        showData = ()=>{
+            const input1 = {...this.myRef.current}
+            console.log(input1.value)
+        }
+        showData2 = ()=>{
+            const {input2} = this
+            console.log(input2.value)
+        }
+
+        render(){
+            return (<div>
+                    <input ref={this.myRef} type="text" placeholder="click botton" />
+                    <button onClick={this.showData}>Click to show</button>
+                    <input onBlur={this.showData2} ref={c => this.input2 = c} type="text" placeholder="blur to show" />
+                    </div>)
+        }
+    }
+
+    ReactDOM.render(<Demo a={1} b={2} />,document.getElementById("test"))
+ </script>
+</body>
+
+</html>

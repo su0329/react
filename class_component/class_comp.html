@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react container -->
+ <div id="test"></div>
+ 
+ <!-- import resources -->
+ <script type="text/javascript" src="../js/react.development.js"></script>
+ <script type="text/javascript" src="../js/react-dom.development.js"></script>
+ <script type="text/javascript" src="../js/babel.min.js"></script>
+ 
+ <!-- create virtual DOM -->
+ <!-- JSX {JS element} -->
+ <script type="text/babel">
+    const myID = 'id0001'
+    const myData = 'hello, react'
+
+    /* Uppercase first letter
+       render function + return clause
+       extends React.Component   */
+ class Mycomponent extends React.Component{
+     // in class component, you can assign a value to a new variable without defining it.
+     constructor(props){
+         super(props)
+         this.state = {isHot:true}
+         this.demo = this.test.bind(this)
+     }
+     a = 4
+
+     render(){
+      const {isHot} = this.state
+      return <h2 onClick = {this.demo}>{isHot ? 'today is hot' : 'today is not hot'}</h2>
+     }
+     test(){
+      console.log(this)
+     }
+    changeweather(){
+        //change the attribute value in State ---- use setState
+        
+        //gather the original value of state
+        const isHot = this.state.isHot
+        this.setState({isHot:!isHot})
+    }
+}
+ ReactDOM.render(<Mycomponent/>,document.getElementById('test'))
+
+ 
+ </script>
+</body>
+
+</html>
